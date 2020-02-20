@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /*가상 클라스*/
+        a:link {color: slateblue; text-decoration: underline;}
+        a:visited {color: tomato;}
+        a:hover {text-decoration: yellowgreen;}
+        a:active {background-color: yellowgreen;}
+
+        div.d1 {border: 1px dashed red; width: 400px; padding: 5px;}
+        /*가상 클라스*/
+        div.d1:hover {background-color: sandybrown;}
+
+        div.d2 {border: 1px dashed rgb(139, 62, 62); width: 400px; padding: 5px;}
+        /*가상 클라스*/
+        div.d2:hover {background-color: rgb(163, 100, 45);}
+    </style>
+</head>
+<body>
+
+    <h2>Pseudo Class</h2>
+    <p><a href="http://www.w3.org" target="blink">W3C 방문</a> : 마우스 이벤트에 따른 링크의 변화를 보셩.</p>
+    <div class="d1">
+        <h3> 가상 클래스 1 영역</h3>
+        마우스 위치에 따른 박스 스타일을 보셩
+    </div>
+    <div class="d2">
+        <h3>가상 클래스 2 영역</h3>
+        마우스 위치에 따른 박스 스타일을 보셩
+    </div>
+
+
+</body>
+</html>
