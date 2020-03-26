@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getEmpList.html</title>
+</head>
+<body>
+	<h1>Ajax</h1>
+	<p id="show"></p>
+	<script>
+		var xhtp = new XMLHttpRequest();  //ajax 처리 오브젝트  , 명령아(XMLHttpRequest)
+		xhtp.onreadystatechange = function() { //서버에 파일을 요청, 4번정도 까지 데이터 요청 속성 (inreadystatechange)
+			//		console.log("readyState: "+ xhtp.readyState +", status:"+ xhtp.status)
+			if (xhtp.readyState == 4 && xhtp.status == 200) {
+				var parsedData = JSON.parse(xhtp.responseText);		//parse ->결과를 괄호로 표현(오브젝트로 표현)		
+				console.log(parsedData);
+				showPage(parsedData);	
+			}
+		}
+		xhtp.open("get", "../GetEmpListServlet");
+		xhtp.send();
+		
+		
+		
+		function showPage(datas){
+			//console.log(datas);
+			var fields = ["empId", "firstName", "lastName"];
+			var $tr, $td, $text;
+			var tab = document.createElement("table");
+			tab.setAttribute("border",1);
+			
+			
+			datas.forEach(function(obj){
+				console.log(obj.empId+","+obj.firstName+","+obj.lastName);
+				$tr = document.createElement("tr");  //1번 선언으로 계속 돌려사용
+				
+				$text = document.createTextNode(obj.empId);
+				$td = document.createElement("td");
+				$td.appendChild($text);
+				$tr.appendChild($td);
+				
+				$text = document.createTextNode(obj.firstName);
+				$td = document.createElement("td");
+				$td.appendChild($text);
+				$tr.appendChild($td);
+				
+				$text = document.createTextNode(obj.lastName);
+				$td = document.createElement("td");
+				$td.appendChild($text);
+				$tr.appendChild($td);
+			
+				tab.appendChild($tr);
+				
+				
+			});
+			document.getElementById("show").appendChild(tab);
+		}
+		
+		
+		
+		
+	</script>
+</body>
+</html>
