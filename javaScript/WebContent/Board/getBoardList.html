@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getBoardList.html</title>
+</head>
+<body>
+
+	<p id="show"></p>
+	<script>
+		var show = document.getElementById("show");
+		var $table, $tr, $td, $text;
+		var xhtp = new XMLHttpRequest();
+		xhtp.onreadystatechange = function() {
+
+			if (xhtp.readyState == 4 && xhtp.status == 200) {
+				console.log(xhtp.responseText);
+
+				var datas = JSON.parse(xhtp.responseText);
+				showPage(datas)
+			}
+		}
+
+		xhtp.open("get", "../GetBoardListServlet", true);
+		xhtp.send();
+		
+		
+		function showPage(datas){
+		//	obj.put("Board_no", b.getBoardNumber());
+		//	obj.put("Content", b.getContent());
+		//	obj.put("Writer", b.getWriter());
+		//	obj.put("CreateDate", b.getCreateDate());
+			var fields = ["Board_no", "Content", "Writer", "CreateDate"];
+			var $tr, $td, $text;
+			var tab = document.createElement("table");
+            tab.setAttribute("border", 1);
+
+            datas.forEach(function(obj){
+             //   console.log(obj.Board_no+","+obj.Content+","+obj.Writer","+obj.CreateDate);
+                $tr = document.createElement("tr");               
+                $text = document.createTextNode(obj.Board_no);
+                $td = document.createElement("td");
+                $td.appendChild($text);
+                $tr.appendChild($td);
+
+                $text = document.createTextNode(obj.Content);
+                $td = document.createElement("td");
+                $td.appendChild($text);
+                $tr.appendChild($td);
+
+                $text = document.createTextNode(obj.Writer);
+                $td = document.createElement("td");
+                $td.appendChild($text);
+                $tr.appendChild($td);
+
+                $text = document.createTextNode(obj.CreateDate);
+                $td = document.createElement("td");
+                $td.appendChild($text);
+                $tr.appendChild($td);
+                
+                tab.appendChild($tr);
+
+
+            });
+            document.getElementById("show").appendChild(tab);
+		}
+		
+	</script>
+
+</body>
+</html>
