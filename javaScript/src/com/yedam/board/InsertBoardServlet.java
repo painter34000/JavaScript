@@ -23,8 +23,8 @@ public class InsertBoardServlet extends HttpServlet {
       throws ServletException, IOException {
 //      response.getWriter().append("Served at: ").append(request.getContextPath());
 //      String boardNo = request.getParameter("board_no");
-      String writer = request.getParameter("Writer");
-      String content = request.getParameter("Content");
+      String writer = request.getParameter("writer");
+      String content = request.getParameter("content");
       System.out.println("Writer : " + writer
                      + ", Content : " + content);
       
@@ -32,13 +32,10 @@ public class InsertBoardServlet extends HttpServlet {
       brd.setWriter(writer);
       brd.setContent(content);
       BoardDAO boardDAO = new BoardDAO(); //SQL넣기위함
-      boardDAO.insertBoard(brd);
-      
-            
+      boardDAO.insertBoard(brd);      
    }
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       doGet(request, response);
    }
-
 }

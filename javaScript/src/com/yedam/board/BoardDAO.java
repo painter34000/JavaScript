@@ -27,7 +27,7 @@ public class BoardDAO {
 	}
 
 	public List<Board> getBoardList() {
-		String sql = "Select * from Board";
+		String sql = "Select * from Board order by board_no desc";
 		List<Board> list = new ArrayList<>();
 
 		try {
@@ -51,7 +51,7 @@ public class BoardDAO {
 	
 	public Board getBoardInfo(int BoardNo){
 		String sql = "select board_no , content, writer, create_date from board " + 
-				"where board_no = ? order by board_no desc";
+				"where board_no = ? ";
 		Board brd = new Board();
 		try {  //try 문에서 에러가 나면 catch문으로 결과값 송출
 			PreparedStatement pstmt = conn.prepareStatement(sql);

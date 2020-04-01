@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>funtion01.html</title>
+    <script src="function01.js"></script>
+    <script src="function02.js"></script>
+    <script src="function03.js"></script>
+
+
+</head>
+
+<body>
+    <div id="galleryZone">
+        <p><img id="photo" width="200px" height="100px" src="./images/images1.jpg"></p>
+        <p><button onclick="gallery(0)">이전</button></p>
+        <p><button onclick="gallery(1)">다음</button></p>
+
+    </div>
+
+    <script>
+        var fnc1 = "funtion";  //일반적인 함수 정의
+        function fnc1() {     //함수명: func1
+            return 10 + 20;
+        }
+        console.log(fnc1);
+        
+        var fnc2 = function (num1, num2) {    //변수에 함수값을 넣을 수 있다
+            return num1 + num2;
+        }
+        console.log(fnc2());
+        
+        var sum = fnc3(1, 2, 3, 4, 5, 6, 7);
+        function fnc3() {
+            //console.log(arguments);
+            var sum = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            } return sum;
+        }
+        // var sum = fun3();
+        console.log("갯수: " + sum);
+        
+        </script>
+
+
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-package com.yedam.board;
+package com.yedam.test03;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-@WebServlet("/GetBoardListServlet")
-public class GetBoardListServlet extends HttpServlet {
+@WebServlet("/GetTest03ListServlet")
+public class GetTest03ListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public GetBoardListServlet() {
+	public GetTest03ListServlet() {
 		super();
 	}
 
@@ -26,14 +26,14 @@ public class GetBoardListServlet extends HttpServlet {
 		JSONArray ary = new JSONArray();
 		BoardDAO dao = new BoardDAO();
 		for (Board b : dao.getBoardList()) {
-			obj.put("Board_no", b.getBoardNumber());
+			obj.put("Department_no", b.getDepartment_no());
 			
-			obj.put("Content", b.getContent());
-			obj.put("Writer", b.getWriter());
+			obj.put("Department_Id", b.getDepartment_Id());
+			obj.put("Department_name", b.getDepartment_name());
 			obj.put("CreateDate", b.getCreateDate());
 			ary.add(obj);
 		}
-		PrintWriter out = response.getWriter();
+		PrintWriter out = response.getDepartment_name();
 		out.print(ary.toString());
 	}
 
