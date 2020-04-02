@@ -56,7 +56,7 @@ public class EmpDAO {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Employee emp = new Employee();
+				Employee emp = new Employee());
 //				emp.setEmployeeId(rs.getInt("employee_id"));
 //				emp.setFirstName(rs.getString("first_Name"));
 //				emp.setLastName(rs.getString("last_Name"));
