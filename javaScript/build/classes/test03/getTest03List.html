@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getTest03List.html</title>
+</head>
+<body>
+
+
+	content<input type="text" name="" id="content"></input>
+	<br> 
+	writer<input type="text" name="" id="writer"></input>
+	<br>
+	<button onclick="insertTest03func()">Click</button>
+	<p id="show"></p>
+	<script>
+		var show = document.getElementById("show");
+		var $table, $tr, $td, $text;
+		var xhtp = new XMLHttpRequest();
+		xhtp.onreadystatechange = function() {
+			if (xhtp.readyState == 4 && xhtp.status == 200) {
+				console.log(xhtp.responseText);
+
+				var datas = JSON.parse(xhtp.responseText);
+				showPage(datas)
+			}
+		}
+
+		xhtp.open("get", "../GetTest03ListServlet", true);
+		xhtp.send();
+
+		function insertTest03func() {
+			var Department_Id = document.getElementById('Department_Id').value;
+			var Department_name = document.getElementById('Department_name').value;
+			console.log(Department_Id);
+			console.log(Department_name);
+			var xhtp = new XMLHttpRequest();
+			xhtp.onreadystatechange = function() {
+				console.log(xhtp.responseText);
+
+			}
+			xhtp.open("post", "../InsertTest03Servlet", true); //true:비동기, false:동기
+			xhtp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+			xhtp.send("Department_Id=" + Department_Id + "&Department_name=" + Department_name);
+		}
+
+		function showPage(datas) {
+
+			var fields = [ "Department_no", "Department_Id", "Department_name", "CreateDate" ];
+			var $tr, $td, $text;
+			var tab = document.createElement("table");
+			tab.setAttribute("test03", 1);
+
+			datas.forEach(function(obj) {
+				$tr = document.createElement("tr");
+				$text = document.createTextNode(obj.Department_no);
+				$td = document.createElement("td");
+				$a = document.createElement("a");
+				$a.appendChild($text);
+				$a.setAttribute("href", "gettest03.jsp?test03="+obj.Board_no);
+				$td.appendChild($a);
+				$tr.appendChild($td);
+				
+								
+
+				$text = document.createTextNode(obj.Department_Id);
+				$td = document.createElement("td");
+				$td.appendChild($text);
+				$tr.appendChild($td);
+
+				$text = document.createTextNode(obj.Department_name);
+				$td = document.createElement("td");
+				$td.appendChild($text);
+				$tr.appendChild($td);
+
+				$text = document.createTextNode(obj.CreateDate);
+				$td = document.createElement("td");
+				$td.appendChild($text);
+				$tr.appendChild($td);
+
+				tab.appendChild($tr);
+
+			});
+			document.getElementById("show").appendChild(tab);
+		}
+	</script>
+
+</body>
+</html>
