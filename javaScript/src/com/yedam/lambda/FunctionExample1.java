@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
+import com.yedam.stream.Student;
+
 public class FunctionExample1 {
 
 	private static List<Student> list = Arrays.asList(new Student("홍길동", 90, 95), new Student("신용권", 95, 93));

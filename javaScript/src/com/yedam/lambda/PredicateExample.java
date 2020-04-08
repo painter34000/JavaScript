@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
+import com.yedam.stream.Student;
+
 public class PredicateExample {
 	static List<Student> list = Arrays.asList(new Student("홍길동 ", "남자", 90, 80), new Student("김순희", "여자", 90, 85),
 			new Student("김자바", "남자", 95, 85), new Student("박한나", "여자", 92, 85));
