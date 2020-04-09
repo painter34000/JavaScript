@@ -46,12 +46,7 @@ public class Format {
 		System.out.println(df.format(num));
 		
 		df = new DecimalFormat("\u00A4  #,###");
-		System.out.println(df.format(num));
-
-
-		
-		
-		
+		System.out.println(df.format(num));		
 	}
 
 }
